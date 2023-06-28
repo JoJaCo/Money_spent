@@ -3,9 +3,15 @@ package com.example.moneyspent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.End
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -15,9 +21,13 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.InspectableModifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.moneyspent.ui.theme.MoneySpentTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,16 +49,40 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MoneySpentLayout(modifier: Modifier = Modifier){
+fun MoneySpentLayout(
+    modifier: Modifier = Modifier
 
-    Column(modifier = modifier) {
-        Text(text = "Your Spending")
+) {
+
+    Column(modifier = modifier,
+    horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Row(modifier = modifier,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically) {
+
+            Text(modifier = modifier
+                .padding(start = 55.dp)
+                , text = "Your Spending:")
+            Text(modifier = modifier
+                .padding(start = 0.dp)
+                , text = "6.69")
+        }
+
         //
-        TextField(value = "6.69",
+        Spacer(modifier = modifier.padding(10.dp))
+
+        TextField(
+            value = "6.69",
             onValueChange = {},
-            modifier = modifier)
+            modifier = modifier
+        )
+        Spacer(modifier = modifier.padding(10.dp))
         //
-        EnterButton()
+        EnterButton(modifier = modifier)
+
+
 
 
 
@@ -57,14 +91,15 @@ fun MoneySpentLayout(modifier: Modifier = Modifier){
 }
 
 @Composable
-fun EnterButton(){
+fun EnterButton(modifier: Modifier = Modifier) {
     Button(onClick = { /*TODO*/ }) {
         Text(text = "Enter")
-        
+
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true,
+showSystemUi = true)
 @Composable
 fun MoneySpentPreview() {
     MoneySpentTheme {
