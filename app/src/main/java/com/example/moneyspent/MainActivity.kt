@@ -56,6 +56,8 @@ fun MoneySpentLayout(
 
 ) {
 
+
+
     Column(modifier = modifier,
     horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -83,7 +85,7 @@ fun MoneySpentLayout(
         )
         Spacer(modifier = modifier.padding(10.dp))
         //
-        EnterButton(modifier = modifier)
+        EnterButtonAndTextField(modifier = modifier)
 
 
 
@@ -94,9 +96,12 @@ fun MoneySpentLayout(
 }
 
 @Composable
-fun EnterButton(modifier: Modifier = Modifier) {
-    Button(onClick = { /*TODO*/ }) {
-        Text(text = "Enter")
+fun EnterButtonAndTextField(modifier: Modifier = Modifier,
+onButtonClick:() -> Unit
+) {
+
+    Button(onClick = onButtonClick) {
+        Text(text = stringResource(R.string.enter))
 
     }
 }

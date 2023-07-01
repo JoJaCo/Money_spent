@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Money spent</string>
     <string name="spending">Your Spending:</string>
+    <string name="enter">Enter</string>
 </resources>
