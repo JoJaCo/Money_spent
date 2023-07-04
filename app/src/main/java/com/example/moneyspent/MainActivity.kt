@@ -3,6 +3,7 @@ package com.example.moneyspent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.End
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -113,6 +114,20 @@ fun MoneySpentLayout(
     }
 
 }
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EditNumberField(
+    @StringRes label: Int,
+    value:String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+
+){
+    TextField(value = value,
+        onValueChange = onValueChange)
+}
+
+
 
 
 @Preview(
@@ -122,6 +137,6 @@ fun MoneySpentLayout(
 @Composable
 fun MoneySpentPreview() {
     MoneySpentTheme {
-        MoneySpentLayout()
+        EditNumberField()
     }
 }
